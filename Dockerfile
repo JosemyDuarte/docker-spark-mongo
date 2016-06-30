@@ -1,5 +1,7 @@
 FROM ubuntu:16.04
 
+MAINTAINER Josemy Duarte <duartejosemy@gmail.com>
+
 # See https://github.com/phusion/baseimage-docker/issues/58
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 
