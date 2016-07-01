@@ -59,5 +59,6 @@ RUN useradd -m -s /bin/bash -N -u $NB_UID $NB_USER
 USER $NB_USER
 WORKDIR /home/$NB_USER
 
+
 CMD ["/bin/bash"]
 
