@@ -51,9 +51,10 @@ RUN wget -qO - ${MONGO_HADOOP_URL} | tar -xz -C /usr/local/ \
 
 RUN echo "spark.driver.extraClassPath   ${CLASSPATH}" > $SPARK_HOME/conf/spark-defaults.conf
 
-RUN groupadd -r spark && useradd -r -g spark spark
+RUN groupadd -r spark && useradd -r -ms /bin/bash -g spark spark
 
 USER spark
+WORKDIR /home/spark
 
 CMD ["/bin/bash"]
 
