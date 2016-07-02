@@ -14,8 +14,8 @@ RUN pip --no-cache-dir install pymongo
 
 ENV SPARK_VERSION 1.6.1
 ENV HADOOP_VERSION 2.6
-ENV MONGO_HADOOP_VERSION 1.5.1
-ENV MONGO_HADOOP_COMMIT r1.5.1
+ENV MONGO_HADOOP_VERSION 1.5.2
+ENV MONGO_HADOOP_COMMIT r1.5.2
 
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 ENV SPARK_HOME /usr/local/spark
@@ -40,6 +40,9 @@ ENV JARS ${MONGO_HADOOP_JAR},${MONGO_HADOOP_SPARK_JAR}
 ENV PYSPARK_DRIVER_PYTHON /usr/bin/ipython
 ENV PATH $PATH:$SPARK_HOME/bin
 
+ENV NB_USER spark
+ENV NB_UID 1000
+
 # Download  Spark
 RUN wget -qO - ${SPARK_URL} | tar -xz -C /usr/local/ \
     && cd /usr/local && ln -s ${SPARK_DIR} spark
@@ -51,14 +54,10 @@ RUN wget -qO - ${MONGO_HADOOP_URL} | tar -xz -C /usr/local/ \
 
 RUN echo "spark.driver.extraClassPath   ${CLASSPATH}" > $SPARK_HOME/conf/spark-defaults.conf
 
-ENV NB_USER spark
-ENV NB_UID 1000
-
 RUN useradd -m -s /bin/bash -N -u $NB_UID $NB_USER
 
 USER $NB_USER
 WORKDIR /home/$NB_USER
-
 
 CMD ["/bin/bash"]
 
