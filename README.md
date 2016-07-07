@@ -1,6 +1,4 @@
 # docker-spark-mongo
-Docker image with spark integrated with pyspark-mongo.
-
 PySpark + [Mongo Hadoop](https://github.com/mongodb/mongo-hadoop):
 
 * Ubuntu 16.04
