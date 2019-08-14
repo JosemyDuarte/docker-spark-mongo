@@ -8,7 +8,7 @@ PySpark + [Mongo Hadoop](https://github.com/mongodb/mongo-hadoop):
 To see how it work, you can run a mongo instance with my image:
 
 ```bash
-$ docker-compose run spark-mongo
+$ docker run josemyd/docker-spark-mongo
 ```
 
 And then check if it works:
