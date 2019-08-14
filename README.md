@@ -2,26 +2,15 @@
 PySpark + [Mongo Hadoop](https://github.com/mongodb/mongo-hadoop):
 
 * Ubuntu 16.04
-* Apache Spark 1.6.1
-* Mongo Hadoop 1.5.1
+* Apache Spark 2.4.3
+* Mongo Hadoop 1.5.2
 
-To see how it work, you can run a mongo instance:
-
-```bash
-docker run -d --name mongo mongo:3.2
-```
-
-And after that, run this image:
+To see how it work, you can run a mongo instance with my image:
 
 ```bash
-docker run -i -t --link mongo:mongo josemyd/docker-spark-mongo /bin/bash
+$ docker-compose run spark-mongo
 ```
 
-Finally, run pyspark as follow:
-
-```bash
-$ pyspark --jars ${JARS} --driver-class-path ${SPARK_DRIVER_EXTRA_CLASSPATH}
-```
 And then check if it works:
 
 ```python

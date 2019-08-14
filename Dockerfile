@@ -12,7 +12,7 @@ RUN apt-get update \
 
 RUN pip --no-cache-dir install pymongo 
 
-ENV SPARK_VERSION 1.6.1
+ENV SPARK_VERSION 2.4.3
 ENV HADOOP_VERSION 2.6
 ENV MONGO_HADOOP_VERSION 1.5.2
 ENV MONGO_HADOOP_COMMIT r1.5.2
@@ -59,5 +59,4 @@ RUN useradd -m -s /bin/bash -N -u $NB_UID $NB_USER
 USER $NB_USER
 WORKDIR /home/$NB_USER
 
-CMD ["/bin/bash"]
-
+CMD ["/bin/bash", "-c", "$SPARK_HOME/bin/pyspark --jars ${JARS} --driver-class-path ${SPARK_DRIVER_EXTRA_CLASSPATH}"]
